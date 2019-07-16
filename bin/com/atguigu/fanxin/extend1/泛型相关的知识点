@@ -1,0 +1,18 @@
+在JAVA中返回类型使用泛型T和Object有什么区别？
+最近在读jackson源码的时候发现有段代码返回类型写的是<T> T，而我自己一般写的是Object。上网搜了下这个语法糖，在stackoverflow上找到一个比较简单易懂的解释，搬运过来（https://stackoverflow.com/questions/5207115/java-generics-t-vs-object）
+问题：下面2个方法的声明有何不同
+public Object doSomething(Object obj) {....}
+
+public <T> T doSomething(T t) {....}
+答案：
+单从上文2个方法声明来说-没有区别。无论是t 还是 obj，你都只能调用Object类型的参数和返回值。
+但是基于上面2个方法，如果你有一个使用了泛型的类：
+MyClass<Foo> my = new MyClass<Foo>();
+Foo foo = new Foo();
+就可以这么写：
+Foo newFoo = my.doSomething(foo);
+但是如果是使用object的话，就得这么写
+Foo newFoo = (Foo) my.doSomething(foo);
+由此可见，使用泛型，有2个好处：
+1.不需要做强制类型转换
+2.编译时更安全。如果使用Object类的话，你没法保证返回的类型一定是Foo，也许是其它类型。这时你就会在运行时得到一个类型转换异常（ClassCastException）
