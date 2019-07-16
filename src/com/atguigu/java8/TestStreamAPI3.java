@@ -27,7 +27,7 @@ public class TestStreamAPI3 {
 	
 	//3. 终止操作
 	/*
-		归约
+		归约@BinaryOperator
 		reduce(T identity, BinaryOperator) / reduce(BinaryOperator) ——可以将流中元素反复结合起来，得到一个值。
 	 */
 	@Test
@@ -95,11 +95,16 @@ public class TestStreamAPI3 {
 		Optional<Double> max = emps.stream()
 			.map(Employee::getSalary)
 			.collect(Collectors.maxBy(Double::compare));
-		
-		System.out.println(max.get());
+		//(e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())
+		Optional<Double> max1 = emps.stream()
+				.map((e)->e.getSalary())
+				.collect(Collectors.maxBy((e1,e2)-> Double.compare(e1, e2)));
+				
+		System.out.println(max1.get()+"=========");
 		
 		Optional<Employee> op = emps.stream()
 			.collect(Collectors.minBy((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())));
+			
 		
 		System.out.println(op.get());
 		
