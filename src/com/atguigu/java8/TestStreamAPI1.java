@@ -49,11 +49,14 @@ public class TestStreamAPI1 {
 		Stream<String> stream1 = strList.stream()
 				   .map((e)-> e.toUpperCase());
 		
-		stream1.forEach(System.out::println);
+	//	stream1.forEach(System.out::println);
+		
+		Stream<Stream<Character>> stream5 = strList.stream()
+				.map(TestStreamAPI1::filterCharacter);
+		stream5.forEach(System.out::println);
 		
 		Stream<Stream<Character>> stream2 = strList.stream()
 			   .map(TestStreamAPI1::filterCharacter);
-		
 		stream2.forEach((sm) -> {
 			sm.forEach(System.out::println);
 		});
