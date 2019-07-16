@@ -26,7 +26,7 @@ public class TestStreamAPI3 {
 	);
 	
 	//3. 终止操作
-	/*
+	/*   
 		归约@BinaryOperator
 		reduce(T identity, BinaryOperator) / reduce(BinaryOperator) ——可以将流中元素反复结合起来，得到一个值。
 	 */
