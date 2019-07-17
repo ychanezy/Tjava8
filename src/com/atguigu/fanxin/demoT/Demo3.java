@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Demo3 {
-	 public static void main(String[] args) {
-
+	 public static void main(String[] args) throws ClassNotFoundException {
+		 Class<?> t = Class.forName("com.atguigu.fanxin.demoT.Demo3");
 //       //限制T 为String 类型
 //       Demo2<String> demo = new Demo2<String>();
 //
