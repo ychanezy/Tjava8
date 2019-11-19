@@ -42,19 +42,29 @@ public class TestMethodRef {
 		String[] strs = fun.apply(10);
 		System.out.println(strs.length);
 		
+		Function<Integer, String[]> fun1 = String[]::new;
+		String[] strs1 = fun1.apply(10);
+		System.out.println(strs1.length);
+		
 		System.out.println("--------------------------");
 		
 		Function<Integer, Employee[]> fun2 = Employee[] :: new;
 		Employee[] emps = fun2.apply(20);
 		System.out.println(emps.length);
+		
+		Function<Integer, Employee[]> fun21 = args -> new Employee[args];
+		Employee[] emps1 = fun21.apply(20);
+		System.out.println(emps1.length);
 	}
 	
 	//构造器引用
 	@Test
 	public void test7(){
 		Function<String, Employee> fun = Employee::new;
+		System.out.println(fun.apply("zhangsan").getName());
 		
 		BiFunction<String, Integer, Employee> fun2 = Employee::new;
+		System.out.println(fun2.apply("lisi",100).getAge());
 	}
 	
 	@Test
@@ -96,10 +106,11 @@ public class TestMethodRef {
 	@Test
 	public void test4(){
 		Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
-		
+		System.out.println(com.compare(3, 2));
 		System.out.println("-------------------------------------");
 		
 		Comparator<Integer> com2 = Integer::compare;
+		System.out.println(com.compare(3, 12));
 	}
 	
 	@Test

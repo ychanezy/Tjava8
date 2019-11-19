@@ -78,11 +78,13 @@ public class TestLambda2 {
 			System.out.println("函数式接口");
 			return Integer.compare(x, y);
 		};
+		System.out.println(com.compare(11, 2));
 	}
 	
 	@Test
 	public void test4(){
 		Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
+		System.out.println(com.compare(2, 1));
 	}
 	
 	@Test

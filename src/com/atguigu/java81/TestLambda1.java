@@ -3,6 +3,7 @@ package com.atguigu.java81;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -28,7 +29,9 @@ public class TestLambda1 {
 				return Integer.compare(o1.length(), o2.length());
 			}
 			
+			
 		});
+		System.out.println(ts2.comparator().compare("111111111", "333333"));
 	}
 	
 	//现在的 Lambda 表达式
@@ -36,6 +39,13 @@ public class TestLambda1 {
 	public void test2(){
 		Comparator<String> com = (x, y) -> Integer.compare(x.length(), y.length());
 		TreeSet<String> ts = new TreeSet<>(com);
+		System.out.println(ts.comparator().compare("111111111", "333333"));
+		ts.add("nnn");
+		ts.add("bbb");
+		ts.add("zzz");
+		for(Iterator iter = ts.iterator(); iter.hasNext(); ) { 
+		    System.out.println( iter.next());
+		}
 	}
 	
 	List<Employee> emps = Arrays.asList(
