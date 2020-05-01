@@ -21,10 +21,13 @@ public class TestOptional {
 	public void test4(){
 		Optional<Employee> op = Optional.of(new Employee(101, "张三", 18, 9999.99));
 		
-		Optional<String> op2 = op.map(Employee::getName);
+//		Optional<String> op2 = op.map(Employee::getName);
+//		System.out.println(op2.get());
+		
+		Optional<String> op2 = op.map(e -> e.getName());
 		System.out.println(op2.get());
 		
-		Optional<String> op3 = op.flatMap((e) -> Optional.of(e.getName()));
+		Optional<String> op3 = op.flatMap(e -> Optional.of(e.getName()));
 		System.out.println(op3.get());
 	}
 	

@@ -58,7 +58,7 @@ public class TestStreamAPI1 {
 		Stream<Stream<Character>> stream2 = strList.stream()
 			   .map(TestStreamAPI1::filterCharacter);
 		stream2.forEach((sm) -> {
-			sm.forEach(System.out::println);
+			sm.forEach(System.out::print);
 		});
 		
 		System.out.println("---------------------------------------------");
@@ -66,7 +66,7 @@ public class TestStreamAPI1 {
 		Stream<Character> stream3 = strList.stream()
 			   .flatMap(TestStreamAPI1::filterCharacter);
 		
-		stream3.forEach(System.out::println);
+		stream3.forEach(System.out::print);
 	}
 
 	public static Stream<Character> filterCharacter(String str){

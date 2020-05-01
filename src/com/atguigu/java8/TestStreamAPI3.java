@@ -113,14 +113,14 @@ public class TestStreamAPI3 {
 		Double sum1 = emps.stream()
 				.collect(Collectors.summingDouble((e)-> e.getSalary()));
 		
-		System.out.println(sum+"   dddddddddddd");
+		System.out.println(sum+"   ==sum==");
 		
 		//---------------------------------------------------------------------------
 		
 		Double avg = emps.stream()
 			.collect(Collectors.averagingDouble(Employee::getSalary));
 		
-		System.out.println(avg);
+		System.out.println(avg + " ==avg== ");
 		
 		Long count = emps.stream()
 			.collect(Collectors.counting());

@@ -33,7 +33,7 @@ public class TestLambda3 {
 	public void test4(){
 		List<String> list = Arrays.asList("Hello", "atguigu", "Lambda", "www", "ok");
 		List<String> strList = filterStr(list, (s) -> s.length() > 3);
-		
+		strList.forEach(System.out::println);
 		for (String str : strList) {
 			System.out.println(str);
 		}

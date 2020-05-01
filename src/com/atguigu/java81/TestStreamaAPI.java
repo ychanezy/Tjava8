@@ -53,7 +53,7 @@ public class TestStreamaAPI {
 			new Employee(103, "王五", 28, 3333.33),
 			new Employee(104, "赵六", 8, 7777.77),
 			new Employee(104, "赵六", 8, 7777.77),
-			new Employee(104, "赵六", 8, 7777.77),
+			new Employee(104, "赵六", 18, 7777.77),
 			new Employee(105, "田七", 38, 5555.55)
 	);
 	
