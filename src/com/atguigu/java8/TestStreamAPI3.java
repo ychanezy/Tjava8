@@ -64,6 +64,19 @@ public class TestStreamAPI3 {
 		System.out.println(sum.get());
 	}
 	
+	@Test
+	public void test() {
+		  List<Integer> list = Arrays.asList(1,2,3,4);
+		  
+		    //sum it,flavour 1
+		    int sum1 = list.stream().reduce(0,(acc,e) -> acc + e).intValue();
+		 
+		    //sum it,flavour 2
+		    int sum2 = list.stream().mapToInt(e -> e).sum();
+		 
+		    System.out.println(sum1 + " " + sum2);
+	}
+	
 	//collect——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法
 	@Test
 	public void test3(){
@@ -181,11 +194,50 @@ public class TestStreamAPI3 {
 	
 	@Test
 	public void test9(){
-		Optional<Double> sum = emps.stream()
-			.map(Employee::getSalary)
-			.collect(Collectors.reducing(Double::sum));
+//		Optional<Double> sum = emps.stream()
+//			.map(Employee::getSalary)
+//			.collect(Collectors.reducing(Double::sum));
+		// int sum1 = list.stream().reduce(0,(acc,e) -> acc + e).intValue();
+		Double sum2= emps.stream().collect(Collectors.reducing(new Double(0.00),Employee::getSalary,(sum,b)->{
+			 return sum+b;
+		 }));
+		/**
+		 *  // sum: 是每次累计计算的结果，b是Function的结果
+		    System.out.println(Stream.of(1, 3, 4).collect(Collectors.reducing(0, x -> x + 1, (sum, b) -> {
+		        System.out.println(sum + "-" + b);
+		        return sum + b;
+		    })));
+		 
+			
+			 // 下面代码是对reducing函数功能实现的描述，用于理解reducing的功能
+		    int sum = 0;
+		    List<Integer> list3 = Arrays.asList(1, 3, 4);
+		    for (Integer item : list3) {
+		        int b = item + 1;
+		        System.out.println(sum + "-" + b);
+		        sum = sum + b;
+		    }
+		    System.out.println(sum);
+		 */
+		
 		Double sum1 = emps.stream()
 				.collect(Collectors.summingDouble((e)-> e.getSalary()));
-		System.out.println(sum.get()+"--------"+sum1);
+		System.out.println(sum2+"--------"+sum1);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -49,7 +49,7 @@ public class TestStreamAPI1 {
 		Stream<String> stream1 = strList.stream()
 				   .map((e)-> e.toUpperCase());
 		
-	//	stream1.forEach(System.out::println);
+		stream1.forEach(System.out::println);
 		
 		Stream<Stream<Character>> stream5 = strList.stream()
 				.map(TestStreamAPI1::filterCharacter);
@@ -76,7 +76,7 @@ public class TestStreamAPI1 {
 			list.add(ch);
 		}
 		
-		return list.stream();
+		return list.stream().map(x->x.charValue());
 	}
 	
 	/*

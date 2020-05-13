@@ -18,6 +18,64 @@ import org.junit.Test;
 public class TestOptional {
 	
 	@Test
+	public void test10() {
+		/**
+		 * 不允许包裹为null的对象，否则程序报错。
+		 */
+//		Optional op = Optional.of(null);//此处会报错
+//		System.out.println(op);
+		/**
+		 * 注意：当使用get()获取容器中的对象时，如果对象为null，会有java.util.NoSuchElementException异常。
+		 * 所以最好先进行isPresent()判断，如果返回true，说明存在，然后再获取。
+		 */
+		Optional op1 = Optional.ofNullable(null); //这种是正常的
+		System.out.println(op1.orElse("a"));
+		if(op1.isPresent()) {
+			System.out.println("OK");
+		}else {
+			System.out.println("nok");
+		}
+//		System.out.println(op1.get());
+		/**
+		 * 如果值存在并且满足断言，则返回满足条件的Optional，否则返回empty。经常用来做过滤。
+		 */
+		 Optional<String> op = Optional.of("jack");
+	     Optional res = op.filter((name)-> name.length()>6);
+	     System.out.println(res);  //Optional.empty
+	     
+	     /**
+	      * 如果值存在则对其进行mapping函数操作，如果mappping结果不为空则返回Optional，否则返回empty。
+	      */
+//	     Optional<String> op_1 = Optional.of("jack");  ////Optional[hello,jack]
+	     Optional<String> op_1 = Optional.ofNullable(null);  //Optional.empty
+	     Optional res1 = op_1.map((name) -> "hello,"+name);
+	     System.out.println(res1); 
+	     
+	     /**
+	      * 功能类似map，只不过需要在mapping函数中，自己封装成Optional。
+	      */
+//	     Optional<String> op_2 = Optional.of("jack"); //Optional[hello,jack]
+	     Optional<String> op_2 = Optional.ofNullable(null);  //Optional.empty
+	     Optional res_2 = op_2.flatMap((name) -> Optional.ofNullable("hello,"+name));
+	     System.out.println(res_2);
+	     
+	     /**
+	      * orElse值存在则返回，否则返回其它值。相当于给默认值。
+	      */
+//	     Optional<String> op_3 = Optional.ofNullable(null); //other
+	     Optional<String> op_3 = Optional.ofNullable("lisi");  //lisi
+	     System.out.println(op_3.orElse("other"));  
+	     
+	     /**
+	      * 功能类似orElse都是返回值，不同在于它能使用lambda表达式更灵活的处理返回默认值
+	      */
+//	     Optional<String> op_4 = Optional.ofNullable(null);  //true
+	     Optional<String> op_4 = Optional.ofNullable("baidu"); //baidu
+	     System.out.println(op_4.orElseGet(() -> String.valueOf(true))); 
+		
+	}
+	
+	@Test
 	public void test4(){
 		Optional<Employee> op = Optional.of(new Employee(101, "张三", 18, 9999.99));
 		
