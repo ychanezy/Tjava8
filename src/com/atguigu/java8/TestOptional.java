@@ -49,7 +49,7 @@ public class TestOptional {
 //	     Optional<String> op_1 = Optional.of("jack");  ////Optional[hello,jack]
 	     Optional<String> op_1 = Optional.ofNullable(null);  //Optional.empty
 	     Optional res1 = op_1.map((name) -> "hello,"+name);
-	     System.out.println(res1); 
+	     System.out.println(res1+"=res_1");
 	     
 	     /**
 	      * 功能类似map，只不过需要在mapping函数中，自己封装成Optional。
@@ -57,7 +57,7 @@ public class TestOptional {
 //	     Optional<String> op_2 = Optional.of("jack"); //Optional[hello,jack]
 	     Optional<String> op_2 = Optional.ofNullable(null);  //Optional.empty
 	     Optional res_2 = op_2.flatMap((name) -> Optional.ofNullable("hello,"+name));
-	     System.out.println(res_2);
+	     System.out.println(res_2+"=res_2");
 	     
 	     /**
 	      * orElse值存在则返回，否则返回其它值。相当于给默认值。
@@ -91,7 +91,8 @@ public class TestOptional {
 	
 	@Test
 	public void test3(){
-		Optional<Employee> op = Optional.ofNullable(new Employee());
+		Employee e = null;
+		Optional<Employee> op = Optional.ofNullable(e);
 		
 		if(op.isPresent()){
 			System.out.println(op.get());

@@ -16,6 +16,7 @@ public class Test {
 	    dout.writeUTF(name); 
 	    dout.writeInt(age); 
 	    byte[] buff = bout.toByteArray(); 
+	    System.out.println(new String(buff, "utf-8"));
 	    ByteArrayInputStream bin = new ByteArrayInputStream(buff); 
 	    DataInputStream dis = new DataInputStream(bin); 
 	    String newName = dis.readUTF(); 
