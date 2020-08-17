@@ -19,6 +19,16 @@ import org.junit.Test;
  * 3. 终止操作(终端操作)
  */
 public class TestStreamaAPI {
+	@Test
+	public void test11() {
+		List<String> cities = Arrays.asList("Milan", 
+                "London", 
+                "New York", 
+                "San Francisco");
+		String citiesCommaSeparated = cities.stream()
+                .collect(Collectors.joining(","));
+		System.out.println(citiesCommaSeparated);
+	}
 	
 	//1. 创建 Stream
 	@Test
