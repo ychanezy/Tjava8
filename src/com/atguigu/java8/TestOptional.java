@@ -27,7 +27,13 @@ public class TestOptional {
 		/**
 		 * 注意：当使用get()获取容器中的对象时，如果对象为null，会有java.util.NoSuchElementException异常。
 		 * 所以最好先进行isPresent()判断，如果返回true，说明存在，然后再获取。
+		 * 
 		 */
+		Employee e = new Employee();
+		e.setAge(19);
+		Optional op11 = Optional.ofNullable(e);
+		System.out.println(op11.isPresent()+"---------");
+		
 		Optional op1 = Optional.ofNullable(null); //这种是正常的
 		System.out.println(op1.orElse("a"));
 		if(op1.isPresent()) {
