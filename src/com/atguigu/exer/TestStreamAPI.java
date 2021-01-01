@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.atguigu.java8.Employee;
 import com.atguigu.java8.Employee.Status;
-
+ 
 public class TestStreamAPI {
 	
 	/*
