@@ -1,6 +1,6 @@
 package com.atguigu.eventBus;
 
-import com.google.common.util.concurrent.MoreExecutors;
+//import com.google.common.util.concurrent.MoreExecutors;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -11,7 +11,7 @@ public class EventBus {
     private ObserverRegistry registry = new ObserverRegistry();
 
     public EventBus() {
-        this(MoreExecutors.directExecutor());
+//        this(MoreExecutors.directExecutor());
     }
 
     protected EventBus(Executor executor) {

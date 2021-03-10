@@ -1,6 +1,6 @@
 package com.atguigu.eventBus;
 
-import com.google.common.annotations.Beta;
+//import com.google.common.annotations.Beta;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@Beta
+//@Beta
 public @interface Subscribe {}
